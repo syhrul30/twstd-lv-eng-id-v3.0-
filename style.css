@@ -1,0 +1,220 @@
+/* Gaya dasar & Latar Belakang */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
+    overflow-x: hidden;
+}
+
+/* ================================================================ */
+/* ============= EFEK LATAR BELAKANG CAIR (LIQUID) ================ */
+/* ================================================================ */
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.shape1, .shape2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+}
+
+.shape1 {
+    width: 500px;
+    height: 500px;
+    /* BERUBAH: gradasi biru menjadi pink/rose terang */
+    background: radial-gradient(circle, rgba(225, 29, 72, 0.4) 0%, rgba(0,0,0,0) 70%);
+    top: -10%;
+    left: -10%;
+    animation: moveShape1 20s infinite alternate ease-in-out;
+}
+
+.shape2 {
+    width: 600px;
+    height: 600px;
+    /* BERUBAH: gradasi biru tua menjadi dark rose/maroon */
+    background: radial-gradient(circle, rgba(136, 19, 55, 0.3) 0%, rgba(0,0,0,0) 70%);
+    bottom: -15%;
+    right: -15%;
+    animation: moveShape2 25s infinite alternate ease-in-out;
+}
+
+@keyframes moveShape1 {
+    from { transform: translate(-20%, -20%) rotate(0deg); }
+    to { transform: translate(20%, 20%) rotate(360deg); }
+}
+
+@keyframes moveShape2 {
+    from { transform: translate(10%, 10%) rotate(0deg); }
+    to { transform: translate(-10%, -10%) rotate(180deg); }
+}
+
+
+/* ================================================================ */
+/* ================= EFEK KACA (GLASSMORPHISM) ==================== */
+/* ================================================================ */
+
+/* Header artikel */
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    /* BERUBAH: warna teks dari biru muda ke pink muda */
+    color: #fda4af;
+    /* BERUBAH: latar belakang dari biru slate ke ungu/pink gelap */
+    background: rgba(50, 10, 25, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+}
+
+.article-header h3 {
+     /* BERUBAH: warna teks dari biru sangat muda ke pink sangat muda */
+     color: #ffe4e6;
+}
+
+/* Konten artikel */
+.article-content {
+    /* BERUBAH: latar belakang dari biru slate ke ungu/pink gelap */
+    background: rgba(50, 10, 25, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-radius: 0 0 0.75rem 0.75rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.article-content-inner p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    text-indent: 2em;
+}
+.article-content-inner p:last-child {
+    margin-bottom: 0;
+}
+
+/* Saat artikel aktif (terbuka) */
+.article-container.active .article-header {
+    border-radius: 0.75rem 0.75rem 0 0;
+    /* BERUBAH: latar belakang dari biru slate ke ungu/pink gelap (lebih pekat) */
+    background: rgba(50, 10, 25, 0.5);
+}
+
+/* PERUBAHAN UTAMA: Batasi tinggi dan aktifkan scroll */
+.article-container.active .article-content {
+    max-height: 90vh; /* Batasi tinggi maksimal ke 70% dari tinggi layar */
+    overflow-y: auto; /* Aktifkan scroll vertikal jika konten melebihi max-height */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.collapse-icon svg {
+    transition: transform 0.3s ease-in-out;
+    /* BERUBAH: stroke ikon dari biru muda ke pink muda */
+    stroke: #fda4af;
+}
+
+.article-container.active .collapse-icon svg {
+    transform: rotate(180deg);
+}
+
+/* GAYA SCROLLBAR KUSTOM */
+.article-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.article-content::-webkit-scrollbar-track {
+    /* BERUBAH: track dari biru slate transparan ke ungu/pink transparan */
+    background: rgba(50, 10, 25, 0.1);
+    border-radius: 10px;
+}
+
+.article-content::-webkit-scrollbar-thumb {
+    /* BERUBAH: thumb dari biru terang ke pink/rose terang */
+    background-color: #e11d48;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.article-content::-webkit-scrollbar-thumb:hover {
+    /* BERUBAH: hover thumb dari biru lebih muda ke pink/rose lebih muda */
+    background-color: #fb7185;
+}
+
+
+/* ================================================================ */
+/* ======================= GAYA POP-UP ============================ */
+/* ================================================================ */
+
+.original-text-segment {
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+
+.original-text-segment:hover {
+    /* BERUBAH: hover dari biru transparan ke rose transparan */
+    background-color: rgba(225, 29, 72, 0.2);
+}
+
+.selected-text {
+    /* BERUBAH: latar dari biru terang ke rose terang */
+    background-color: #e11d48;
+    /* BERUBAH: warna teks dari putih-kebiruan ke putih-kemerahan */
+    color: #fff1f2;
+    font-weight: 500;
+}
+
+#translation-popup {
+    position: absolute;
+    z-index: 20;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    max-width: 320px;
+    font-size: 0.9rem;
+    color: #ff7291; /* Tetap kuning sesuai aslinya */
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 121, 121, 0.1);
+}
+
+#translation-popup.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#translation-popup::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 20px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent; 
+}
