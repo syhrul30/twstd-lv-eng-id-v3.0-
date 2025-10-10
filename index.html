@@ -5,52 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twisted Love - Ana Huang</title>
     
-    <!-- Memuat library eksternal -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Tautan ke file CSS Anda -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-black text-slate-300">
 
-    <!-- ELEMEN BARU: Untuk efek latar belakang cair -->
+    <div id="progress-bar"></div>
+
     <div class="background-shapes">
         <div class="shape1"></div>
         <div class="shape2"></div>
     </div>
 
-    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl relative z-10">
+    <div class="ui-controls">
+        <button id="vocab-toggle-button" title="Lihat Bookmark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+        <button id="font-adjuster-toggle" title="Ubah Ukuran Font">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7V4h16v3"/>
+                <path d="M9 20h6"/>
+                <path d="M12 4v16"/>
+            </svg>
+        </button>
+    </div>
 
-        <!-- Header -->
+    <div id="font-adjuster-container">
+        <span class="font-adjuster-icon text-sm">A</span>
+        <input type="range" id="font-size-slider" min="1" max="5" value="3" step="1">
+        <span class="font-adjuster-icon text-xl">A</span>
+    </div>
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl relative z-10">
         <header class="text-center mb-12">
-            <img src="https://i.ibb.co.com/TxcLLzk9/Img-832-0-book-reader-Read-Era.webp" 
-            alt="Sampul Buku" 
-            class="w-48 mx-auto rounded-xl mb-6">
+            <img src="https://i.ibb.co.com/TxcLLzk9/Img-832-0-book-reader-Read-Era.webp" alt="Sampul Buku" class="w-48 mx-auto rounded-xl mb-6">
             <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-rose-400 to-rose-600 bg-clip-text text-transparent">
                 Twisted Love
             </h1>
             <p class="text-rose-300 mt-2">Ana Huang (Twisted#1)</p>
         </header>
 
-        <!-- Konten Utama: Akan diisi oleh JavaScript -->
-        <main id="articles-container" class="space-y-4">
-            <!-- Artikel akan ditambahkan di sini -->
-        </main>
+        <main id="articles-container" class="space-y-4"></main>
         
-        <!-- Footer -->
         <footer class="text-center mt-12 text-rose-300">
             <p>&copy; Syhr0el 2025 Bilingual Reader. Dibuat untuk mempermudah membaca.</p>
         </footer>
-
     </div>
 
-    <!-- Elemen Pop-up untuk Terjemahan -->
-    <div id="translation-popup">
-        <!-- Konten terjemahan akan dimasukkan di sini -->
+    <div id="translation-popup"></div>
+
+    <div id="vocab-sidebar">
+        <div class="sidebar-header">
+            <h3 class="text-lg font-semibold text-rose-100">Bookmark</h3>
+            <button id="clear-vocab-button" title="Hapus Semua">Hapus Semua</button>
+        </div>
+        <ul id="vocab-list">
+            </ul>
     </div>
 
-    <!-- Tautan ke file JavaScript Anda (tidak berubah) -->
     <script src="script.js"></script>
 </body>
 </html>
