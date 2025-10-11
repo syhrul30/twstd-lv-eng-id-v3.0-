@@ -6,7 +6,7 @@ body {
 }
 
 /* ================================================================ */
-/* ============= EFEK LATAR BELAKANG CAIR (LIQUID) ================ */
+/* =========== EFEK LATAR BELAKANG AURORA (DIMODIFIKASI) ========== */
 /* ================================================================ */
 .background-shapes {
     position: fixed;
@@ -15,55 +15,39 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
+    overflow: hidden; 
 }
 
-.shape1, .shape2 {
+.shape1, .shape2, .shape3 {
     position: absolute;
     border-radius: 50%;
-    filter: blur(150px);
+    filter: blur(180px); 
+    opacity: 0.6; 
+    transition: transform 0.2s linear;
 }
 
-.shape1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(225, 29, 72, 0.4) 0%, rgba(0,0,0,0) 70%);
-    top: -10%;
-    left: -10%;
-    animation: moveShape1 20s infinite alternate ease-in-out;
-}
-
-.shape2 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(136, 19, 55, 0.3) 0%, rgba(0,0,0,0) 70%);
-    bottom: -15%;
-    right: -15%;
-    animation: moveShape2 25s infinite alternate ease-in-out;
-}
-
-@keyframes moveShape1 {
-    from { transform: translate(-20%, -20%) rotate(0deg); }
-    to { transform: translate(20%, 20%) rotate(360deg); }
-}
-
-@keyframes moveShape2 {
-    from { transform: translate(10%, 10%) rotate(0deg); }
-    to { transform: translate(-10%, -10%) rotate(180deg); }
-}
-
+/* -- Warna Tema Red Rose -- */
+.shape1 { width: 600px; height: 600px; background: #801336; top: -50%; left: -40%; } /* Deep Red */
+.shape2 { width: 700px; height: 700px; background: #C72C41; bottom: -60%; right: -50%; } /* Rose Red */
+.shape3 { width: 550px; height: 550px; background: #EE4540; bottom: -40%; left: 5%; } /* Coral Red */
 
 /* ================================================================ */
-/* ============ GAYA BARU: PROGRES BAR & SCROLL REVEAL ============ */
+/* ================= BAR PROGRES & SCROLL REVEAL ================== */
 /* ================================================================ */
 #progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 4px;
-    background: linear-gradient(90deg, #fb7185, #e11d48, #be123c);
+    background: linear-gradient(90deg, #EE4540, #C72C41, #801336);
     width: 0%;
     z-index: 9999;
     transition: width 0.1s linear;
+}
+
+.article-container:not(.sub-article-container) {
+    border-radius: 0.85rem;
+    overflow: hidden;
 }
 
 .article-container {
@@ -78,84 +62,389 @@ body {
 }
 
 /* ================================================================ */
-/* ========== GAYA BARU: SOROTAN ARTIKEL (HIGHLIGHT) ============== */
+/* ============= GAYA BARU: SOROTAN ARTIKEL (HIGHLIGHT) =========== */
 /* ================================================================ */
 @keyframes temporary-highlight {
-    0% { box-shadow: 0 0 0 0 rgba(251, 113, 133, 0.5); }
-    50% { box-shadow: 0 0 25px 8px rgba(251, 113, 133, 0.2); }
-    100% { box-shadow: 0 0 0 0 rgba(251, 113, 133, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(199, 44, 65, 0.5); }
+    50% { box-shadow: 0 0 25px 8px rgba(199, 44, 65, 0.2); }
+    100% { box-shadow: 0 0 0 0 rgba(199, 44, 65, 0); }
 }
 
 .article-highlight {
     animation: temporary-highlight 2s ease-out;
 }
 
-/* ================================================================ */
-/* ================= EFEK KACA (GLASSMORPHISM) ==================== */
-/* ================================================================ */
-.article-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem 1.5rem; border-radius: 0.75rem; transition: all 0.3s ease; color: #fda4af; background: rgba(50, 10, 25, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); position: sticky; top: 1rem; z-index: 10; }
-.article-header h3 { color: #ffe4e6; }
-.article-content { background: rgba(50, 10, 25, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0px solid rgba(255, 255, 255, 0.1); border-top: none; border-radius: 0 0 0.75rem 0.75rem; max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out; padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 0; padding-bottom: 0; }
+/* --- GAYA UI UTAMA --- */
+.title-spotlight {
+    position: relative;
+    color: #d1d5db;
+    background: linear-gradient(90deg, #7286aa, #fff, #9ca3af);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: spotlight 5s linear infinite;
+}
+
+.article-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    cursor: pointer; 
+    padding: 1rem 1.5rem; 
+    border-radius: 0.85rem; 
+    transition: all 0.3s ease; 
+    color: #FADBD8; 
+    background: rgba(45, 20, 30, 0.35); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+    position: sticky; 
+    top: 1rem; 
+    z-index: 10; 
+    border: 1px solid transparent; 
+    background-clip: padding-box; 
+    -webkit-background-clip: padding-box; 
+}
+.article-header::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; margin: -1px; border-radius: inherit; background: linear-gradient(120deg, rgba(238, 69, 64, 0.3), rgba(199, 44, 65, 0.3), rgba(128, 19, 54, 0.3)); }
+.article-header h3 { color: #FDEDEC; }
+.article-content { background: rgba(45, 20, 30, 0.35); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 0px solid rgba(255, 255, 255, 0.1); border-top: none; border-radius: 0 0 0.85rem 0.85rem; max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out; padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 0; padding-bottom: 0; }
 .article-content-inner p { margin-bottom: 1rem; text-align: justify; text-indent: 2em; }
+
+.article-content-inner img {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.article-content-inner img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .article-content-inner p:last-child { margin-bottom: 0; }
-.article-container.active .article-header { border-radius: 0.75rem 0.75rem 0 0; background: rgba(50, 10, 25, 0.5); }
+.article-container.active .article-header { border-radius: 0.85rem 0.85rem 0 0; background: rgba(45, 20, 30, 0.5); }
 .article-container.active .article-content { max-height: 90vh; overflow-y: auto; padding-top: 1.5rem; padding-bottom: 1.5rem; }
-.collapse-icon svg { transition: transform 0.3s ease-in-out; stroke: #fda4af; }
+.collapse-icon svg { transition: transform 0.3s ease-in-out; stroke: #FADBD8; }
 .article-container.active .collapse-icon svg { transform: rotate(180deg); }
 .article-content::-webkit-scrollbar { width: 8px; }
-.article-content::-webkit-scrollbar-track { background: rgba(50, 10, 25, 0.1); border-radius: 10px; }
-.article-content::-webkit-scrollbar-thumb { background-color: #e11d48; border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
-.article-content::-webkit-scrollbar-thumb:hover { background-color: #fb7185; }
+.article-content::-webkit-scrollbar-track { background: rgba(45, 20, 30, 0.1); border-radius: 10px; }
+.article-content::-webkit-scrollbar-thumb { background-color: #C72C41; border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
+.article-content::-webkit-scrollbar-thumb:hover { background-color: #E55B6E; }
 
 /* ================================================================ */
-/* ============= GAYA POP-UP (DENGAN TOMBOL BOOKMARK) ============= */
+/* =========== GAYA SOROTAN TEKS & ANIMASI BARU ============= */
 /* ================================================================ */
 .original-text-segment { cursor: pointer; transition: background-color 0.2s ease-in-out; padding: 2px 4px; border-radius: 6px; }
-.original-text-segment:hover { background-color: rgba(225, 29, 72, 0.2); }
-.selected-text { background-color: #e11d48; color: #fff1f2; font-weight: 500; }
-#translation-popup { display: flex; align-items: center; gap: 0.75rem; position: absolute; z-index: 20; transform: translateY(8px); transition: opacity 0.2s ease-in-out; pointer-events: none; opacity: 0; padding: 0.75rem; border-radius: 0.5rem; max-width: 450px; font-size: 0.9rem; color: #fecdd3; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(251, 146, 158, 0.2); }
+.original-text-segment:hover { background-color: rgba(199, 44, 65, 0.2); }
+
+/* Gaya sorotan standar saat teks diklik */
+.selected-text { background-color: #C72C41; color: #ffffff; font-weight: 500; }
+
+/* Animasi kedip baru ditambahkan di sini */
+@keyframes bookmark-blink {
+    0%, 100% {
+        background-color: transparent;
+        color: inherit;
+    }
+    50% {
+        background-color: #C72C41;
+        color: #ffffff;
+        font-weight: 500;
+    }
+}
+
+/* Kelas baru untuk menerapkan animasi */
+.bookmark-highlight {
+    animation: bookmark-blink 0.8s ease-in-out 3;
+}
+
+#translation-popup { display: flex; align-items: center; gap: 0.75rem; position: absolute; z-index: 20; transform: translateY(8px); transition: opacity 0.2s ease-in-out; pointer-events: none; opacity: 0; padding: 0.75rem; border-radius: 0.5rem; max-width: 450px; font-size: 0.9rem; color: #FADBD8; background: rgba(30, 15, 20, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(199, 44, 65, 0.3); }
 #translation-popup.visible { opacity: 1; pointer-events: auto; }
-#translation-popup::before { content: ''; position: absolute; bottom: 100%; left: 20px; border-width: 8px; border-style: solid; border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent; }
-.add-vocab-btn { background-color: rgba(251, 146, 158, 0.2); border: 1px solid rgba(251, 146, 158, 0.4); color: #fecdd3; border-radius: 50%; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; }
-.add-vocab-btn:hover { background-color: rgba(251, 146, 158, 0.4); color: white; }
-.add-vocab-btn.added { background-color: rgba(225, 29, 72, 0.5); color: white; border-color: rgba(225, 29, 72, 0.7); }
+#translation-popup::before { content: ''; position: absolute; bottom: 100%; left: 20px; border-width: 8px; border-style: solid; border-color: transparent transparent rgba(30, 15, 20, 0.6) transparent; }
 
 /* ================================================================ */
-/* ================= GAYA BARU: KONTROL UI & FONT ================= */
+/* ============= TOMBOL TAMBAH BOOKMARK ================ */
 /* ================================================================ */
+.add-vocab-btn {
+    background-color: rgba(238, 69, 64, 0.2);
+    border: 1px solid rgba(238, 69, 64, 0.4);
+    color: #F5B7B1;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+.add-vocab-btn:hover { background-color: rgba(238, 69, 64, 0.4); color: white; }
+.add-vocab-btn.added { background-color: rgba(199, 44, 65, 0.5); color: white; border-color: rgba(199, 44, 65, 0.7); }
+
+/* --- KONTROL UI & FONT --- */
 .ui-controls { position: fixed; top: 1rem; right: 1.5rem; z-index: 1001; display: flex; gap: 0.5rem; }
-#font-adjuster-toggle, #vocab-toggle-button { padding: 0.5rem; border-radius: 0.5rem; cursor: pointer; background: rgba(50, 10, 25, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); color: #fda4af; transition: all 0.2s ease-in-out; }
-#font-adjuster-toggle:hover, #vocab-toggle-button:hover { background: rgba(50, 10, 25, 0.6); color: #ffe4e6; }
-#font-adjuster-container { position: fixed; top: 4.5rem; right: 1.5rem; z-index: 1000; display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: 0.75rem; background: rgba(50, 10, 25, 0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+#font-adjuster-toggle, #vocab-toggle-button { padding: 0.5rem; border-radius: 0.5rem; cursor: pointer; background: rgba(45, 20, 30, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); color: #FADBD8; transition: all 0.2s ease-in-out; }
+#font-adjuster-toggle:hover, #vocab-toggle-button:hover { background: rgba(45, 20, 30, 0.7); color: #FDEDEC; }
+#font-adjuster-container { position: fixed; top: 4.5rem; right: 1.5rem; z-index: 1000; display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: 0.75rem; background: rgba(45, 20, 30, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; }
 #font-adjuster-container.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.font-adjuster-icon { color: #fda4af; font-weight: 600; }
+.font-adjuster-icon { color: #FADBD8; font-weight: 600; }
 input[type="range"] { -webkit-appearance: none; appearance: none; width: 120px; height: 4px; background: rgba(0, 0, 0, 0.3); border-radius: 5px; outline: none; cursor: pointer; }
-input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; background: #e11d48; border-radius: 50%; border: 2px solid #ffe4e6; transition: background-color 0.2s ease; }
-input[type="range"]::-webkit-slider-thumb:hover { background-color: #fb7185; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; background: #C72C41; border-radius: 50%; border: 2px solid #FDEDEC; transition: background-color 0.2s ease; }
+input[type="range"]::-webkit-slider-thumb:hover { background-color: #E55B6E; }
 #articles-container.font-size-1 .text-lg { font-size: 0.9rem; line-height: 1.5rem; }
 #articles-container.font-size-2 .text-lg { font-size: 1.0rem; line-height: 1.65rem; }
 #articles-container.font-size-3 .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
 #articles-container.font-size-4 .text-lg { font-size: 1.25rem; line-height: 1.9rem; }
 #articles-container.font-size-5 .text-lg { font-size: 1.4rem; line-height: 2.1rem; }
 
+/* GAYA SUB-ARTIKEL */
+.sub-article-container { 
+    margin-left: 1.5rem; 
+    width: calc(100% - 1.5rem); 
+    margin-top: 1.5rem; 
+    position: relative; 
+}
+.sub-article-container .article-header { 
+    background: rgba(45, 20, 30, 0.25);
+    backdrop-filter: none; 
+    box-shadow: none; 
+    border: none; 
+    border-radius: 0.5rem; 
+    padding: 0.5rem 1rem; 
+}
+.sub-article-container .article-header::before { display: none; }
+.sub-article-container .article-header h3 { font-size: 1rem; font-weight: 500; color: #9ca3af; transition: color 0.3s ease; }
+.sub-article-container .article-header .collapse-icon svg { width: 20px; height: 20px; stroke: #9ca3af; transition: stroke 0.3s ease, transform 0.3s ease-in-out; }
+.sub-article-container .article-content { 
+    background: rgba(45, 20, 30, 0.25);
+    backdrop-filter: none; 
+    padding-left: 1rem; 
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.sub-article-container::before { content: ''; position: absolute; left: -0.75rem; top: 0; bottom: 0; width: 2px; background-color: rgba(156, 163, 175, 0.2); border-radius: 2px; }
+.sub-article-container.active .article-header {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+.sub-article-container.active .article-header h3 { color: #E55B6E; }
+.sub-article-container.active .article-header .collapse-icon svg { stroke: #ffffff; transform: rotate(180deg); }
+.sub-article-container.active .article-content { max-height: 93vh; }
+.sub-article-container .article-content-inner p { margin-bottom: 0.8rem; }
+.sub-article-container .article-content-inner { opacity: 0; transform: translateY(-15px); transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s; }
+.sub-article-container.active .article-content-inner { opacity: 1; transform: translateY(0); }
+
 /* ================================================================ */
-/* ================== GAYA BARU: PANEL BOOKMARK =================== */
+/* ================== PANEL BOOKMARK =================== */
 /* ================================================================ */
-#vocab-sidebar { position: fixed; top: 0; right: 0; width: 380px; max-width: 90vw; height: 100%; z-index: 1002; background: rgba(50, 10, 25, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-left: 1px solid rgba(251, 146, 158, 0.2); transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column; }
-#vocab-sidebar.visible { transform: translateX(0); }
-.sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(251, 146, 158, 0.2); flex-shrink: 0; }
-#clear-vocab-button { background-color: rgba(195, 55, 100, 0.3); border: none; color: #f7c5d6; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.8rem; cursor: pointer; transition: all 0.2s ease; }
-#clear-vocab-button:hover { background-color: rgba(195, 55, 100, 0.6); color: white; }
-#vocab-list { list-style: none; padding: 0.5rem; margin: 0; overflow-y: auto; flex-grow: 1; }
+#vocab-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-width: 90vw;
+    height: 100%;
+    z-index: 1002;
+    background: rgba(20, 10, 15, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(199, 44, 65, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+}
+
+#vocab-sidebar.visible {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(199, 44, 65, 0.2);
+    flex-shrink: 0;
+}
+
+#clear-vocab-button {
+    background-color: rgba(199, 44, 65, 0.4);
+    border: none;
+    color: #F5B7B1;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#clear-vocab-button:hover {
+    background-color: rgba(199, 44, 65, 0.7);
+    color: white;
+}
+
+#vocab-list {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
 #vocab-list::-webkit-scrollbar { width: 6px; }
 #vocab-list::-webkit-scrollbar-track { background: transparent; }
-#vocab-list::-webkit-scrollbar-thumb { background-color: rgba(225, 29, 72, 0.6); border-radius: 6px; }
-.vocab-item { padding: 1rem; margin: 0.5rem; border-radius: 0.5rem; background-color: rgba(50, 10, 25, 0.3); border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer; position: relative; }
-.vocab-item:hover { border-color: rgba(251, 146, 158, 0.3); background-color: rgba(50, 10, 25, 0.6); }
-.vocab-item-original { font-weight: 500; color: #ffe4e6; margin-bottom: 0.25rem; }
-.vocab-item-translation { font-size: 0.9rem; color: #fecdd3; margin-bottom: 0.75rem; }
-.vocab-item-source { font-size: 0.75rem; color: #9ca3af; border-top: 1px dashed rgba(156, 163, 175, 0.2); padding-top: 0.5rem; }
-.delete-vocab-btn { position: absolute; top: 0.5rem; right: 0.5rem; width: 20px; height: 20px; border: none; background: none; color: #9ca3af; font-size: 1.2rem; line-height: 1; cursor: pointer; transition: color 0.2s ease; opacity: 0.5; }
-.vocab-item:hover .delete-vocab-btn { opacity: 1; }
-.delete-vocab-btn:hover { color: #f7c5d6; }
-.empty-vocab-message { text-align: center; padding: 2rem; color: #9ca3af; }
+#vocab-list::-webkit-scrollbar-thumb { background-color: rgba(199, 44, 65, 0.6); border-radius: 6px; }
+
+.vocab-item {
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(45, 20, 30, 0.4);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.vocab-item:hover {
+    border-color: rgba(238, 69, 64, 0.3);
+    background-color: rgba(45, 20, 30, 0.7);
+}
+
+.vocab-item-original {
+    font-weight: 500;
+    color: #FDEDEC;
+    margin-bottom: 0.25rem;
+}
+
+.vocab-item-translation {
+    font-size: 0.9rem;
+    color: #FADBD8;
+    margin-bottom: 0.75rem;
+}
+
+.vocab-item-source {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    border-top: 1px dashed rgba(156, 163, 175, 0.2);
+    padding-top: 0.5rem;
+}
+
+.delete-vocab-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    opacity: 0.5;
+}
+
+.vocab-item:hover .delete-vocab-btn {
+    opacity: 1;
+}
+
+.delete-vocab-btn:hover {
+    color: #F5B7B1;
+}
+
+.empty-vocab-message {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+}
+
+/* ================================================================ */
+/* ================= PREVIEW GAMBAR ================== */
+/* ================================================================ */
+#image-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#image-preview-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#preview-image {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease-out;
+    transform-origin: center center;
+}
+#preview-image.pannable {
+    cursor: grab;
+}
+#preview-image.panning {
+    cursor: grabbing;
+}
+
+
+.preview-controls {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 0.75rem; 
+    background-color: rgba(45, 20, 30, 0.5);
+    padding: 0.75rem 0.5rem; 
+    border-radius: 0.75rem; 
+    z-index: 10; 
+}
+
+.preview-control-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(45, 20, 30, 0.5);
+    color: #FADBD8;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-control-btn:hover {
+    background-color: rgba(45, 20, 30, 0.9);
+    color: #FDEDEC;
+}
+
+#preview-close-button {
+    font-size: 2rem;
+    order: 4; 
+}
+
+#preview-close-button:hover {
+    transform: rotate(90deg);
+}
