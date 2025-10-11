@@ -17,6 +17,7 @@
     <div class="background-shapes">
         <div class="shape1"></div>
         <div class="shape2"></div>
+        <div class="shape3"></div>
     </div>
 
     <div class="ui-controls">
@@ -38,31 +39,54 @@
         <span class="font-adjuster-icon text-xl">A</span>
     </div>
 
+
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl relative z-10">
+
         <header class="text-center mb-12">
-            <img src="https://i.ibb.co.com/TxcLLzk9/Img-832-0-book-reader-Read-Era.webp" alt="Sampul Buku" class="w-48 mx-auto rounded-xl mb-6">
-            <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-rose-400 to-rose-600 bg-clip-text text-transparent">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1661221065i/62057697.jpg" alt="Img-919-0-book-reader-Read-Era"  class="w-48 mx-auto rounded-xl mb-6">
+            
+            
+            <h1 class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-rose-500">
                 Twisted Love
             </h1>
-            <p class="text-rose-300 mt-2">Ana Huang (Twisted#1)</p>
+    
+            <p class="mt-2">
+                <a href="https://www.goodreads.com/author/list/5758632.Ana_Huang" target="_blank" rel="noopener noreferrer" class="text-rose-300 hover:underline hover:text-rose-100">
+                    Ana Huang
+                </a>
+            </p>
         </header>
 
-        <main id="articles-container" class="space-y-4"></main>
+        <main id="articles-container" class="space-y-4">
+            </main>
         
         <footer class="text-center mt-12 text-rose-300">
             <p>&copy; Syhr0el 2025 Bilingual Reader. Dibuat untuk mempermudah membaca.</p>
         </footer>
+
     </div>
 
     <div id="translation-popup"></div>
 
     <div id="vocab-sidebar">
         <div class="sidebar-header">
-            <h3 class="text-lg font-semibold text-rose-100">Bookmark</h3>
+            <h3 class="text-lg font-semibold text-E8F9FF">Bookmark</h3>
             <button id="clear-vocab-button" title="Hapus Semua">Hapus Semua</button>
         </div>
         <ul id="vocab-list">
             </ul>
+    </div>
+
+    <div id="image-preview-overlay">
+        <div class="preview-controls">
+            <button class="preview-control-btn" id="zoom-in-button" title="Perbesar">+</button>
+            <button class="preview-control-btn" id="zoom-out-button" title="Perkecil">-</button>
+            <button class="preview-control-btn" id="zoom-reset-button" title="Reset Zoom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
+            </button>
+            <button class="preview-control-btn" id="preview-close-button" title="Tutup">&times;</button>
+        </div>
+        <img src="" alt="Pratinjau Gambar" id="preview-image">
     </div>
 
     <script src="script.js"></script>
