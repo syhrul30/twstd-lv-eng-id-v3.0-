@@ -133,11 +133,11 @@ body {
 /* ================================================================ */
 /* =========== GAYA SOROTAN TEKS & ANIMASI BARU ============= */
 /* ================================================================ */
-.original-text-segment { cursor: pointer; transition: background-color 0.2s ease-in-out; padding: 2px 4px; border-radius: 6px; }
+.original-text-segment { cursor: pointer; transition: background-color 0.2s ease-in-out; padding: 2px 4px; border-radius: 10px; }
 .original-text-segment:hover { background-color: rgba(199, 44, 65, 0.2); }
 
 /* Gaya sorotan standar saat teks diklik */
-.selected-text { background-color: #C72C41; color: #ffffff; font-weight: 500; }
+.selected-text { background-color: #fa465e !important; color: #000000 !important; font-weight: 600; }
 
 /* Animasi kedip baru ditambahkan di sini */
 @keyframes bookmark-blink {
@@ -146,8 +146,8 @@ body {
         color: inherit;
     }
     50% {
-        background-color: #C72C41;
-        color: #ffffff;
+        background-color: #fa465e;
+        color: #000000;
         font-weight: 500;
     }
 }
